@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>首页</title>
+<link rel="stylesheet" href="/ssm/common/layui/css/layui.css">
+<link rel="stylesheet" href="/ssm/common/iconfont/iconfont.css">
+<style type="text/css">
+	#bodyDiv .layui-input {height:30px;}
+</style>
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		
+		<!-- 顶部导航栏 -->
+		<div class="layui-header">
+			<div class="layui-logo">学生信息管理系统</div>
+			<!-- 头部区域（可配合layui已有的水平导航） -->
+			<ul class="layui-nav layui-layout-left" lay-filter="topMenu" id="topMenu">
+				<li class="layui-nav-item"><a href="javascript:void(0);">学生信息管理</a></li>
+				<li class="layui-nav-item"><a href="javascript:void(0);">学生成绩管理</a></li>
+				<li class="layui-nav-item"><a href="javascript:void(0);">其它</a></li>
+				<li class="layui-nav-item"><a href="javascript:void(0);">其它</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:void(0);">其它管理</a>
+						</dd>
+						<dd>
+							<a href="javascript:void(0);">其它管理</a>
+						</dd>
+						<dd>
+							<a href="javascript:void(0);">其它管理</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+			<ul class="layui-nav layui-layout-right">
+				<li class="layui-nav-item">
+					<a href="javascript:void(0);">
+						<img src="common/img/head.jpg" class="layui-nav-img"> admin
+					</a>
+					<dl class="layui-nav-child">
+						<dd>
+							<a href="javascript:void(0);">基本资料</a>
+						</dd>
+						<dd>
+							<a href="javascript:void(0);">安全设置</a>
+						</dd>
+					</dl>
+				</li>
+				<li class="layui-nav-item"><a href="javascript:void(0);">退出</a></li>
+			</ul>
+		</div>
+
+		<!-- 侧边菜单 -->
+		<div class="layui-side layui-bg-black">
+			<div class="layui-side-scroll">
+				<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+				<ul class="layui-nav layui-nav-tree" lay-filter="leftMenu" id="leftMenu">
+					<li class="layui-nav-item layui-nav-itemed">
+						<a class="" href="javascript:void(0);">信息管理</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:void(0);">学生信息管理</a>
+							</dd>
+							<dd>
+								<a href="javascript:void(0);">其它</a>
+							</dd>
+							<dd>
+								<a href="javascript:void(0);">其它</a>
+							</dd>
+							<dd>
+								<a href="javascript:void(0);">其它</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:void(0);">其它</a>
+						<dl class="layui-nav-child">
+							<dd>
+								<a href="javascript:void(0);">其它一</a>
+							</dd>
+							<dd>
+								<a href="javascript:void(0);">其它二</a>
+							</dd>
+							<dd>
+								<a href="javascript:void(0);">其它三</a>
+							</dd>
+						</dl>
+					</li>
+					<li class="layui-nav-item"><a href="javascript:void(0);">其它</a></li>
+					<li class="layui-nav-item"><a href="javascript:void(0);">其它</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="layui-body" style="overflow-y: scroll;">
+			<!-- 内容主体区域 -->
+			<div style="padding: 15px;" id="bodyDiv"></div>
+		</div>
+
+		<div class="layui-footer">
+			<div style="width:20%; margin:0 auto;"><span>CopyRight &copy;2017 by-lhl</span></div>
+		</div>
+	</div>
+	
+	<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+	<!--[if lt IE 9]>
+	  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+	  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="/ssm/common/layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['element', 'jquery'], function(){
+			var element = layui.element;
+			var $ = layui.$;
+		  
+			var topMenu = [{"id": "1", "name": "信息管理", "url": "", "level": "0"}, 
+				           {"id": "2", "name": "成绩管理", "url": "", "level": "0"}];
+				
+			var leftMenu = [{"name": "信息管理", "url": "", "level": "1", "childMenu": [{ "name": "信息管理", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}, { "name": "信息管理2", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}]}, 
+				            {"name": "成绩管理", "url": "", "level": "1", "childMenu": [{ "name": "成绩管理", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}, { "name": "成绩管理2", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}]}];
+			
+			var leftMenu2 = [{"name": "管理信息", "url": "", "level": "1", "childMenu": [{ "name": "管理信息", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}, { "name": "管理信息2", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}]}, 
+				             {"name": "管理成绩", "url": "", "level": "1", "childMenu": [{ "name": "管理成绩", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}, { "name": "管理成绩2", "url": "/ssm/student.jsp", "level": "2", "childMenu": ""}]}];
+			
+			// 加载topMenu
+			loadTopMenu();
+			// 加载leftMenu
+			loadLeftMenu("1");
+			
+			element.on('nav(topMenu)',function(elem){
+				var id = elem.attr("data-id");
+				loadLeftMenu(id);
+			});
+			
+			element.on('nav(leftMenu)',function(elem){
+				var url = elem.attr("data-url");
+				console.log(url);
+				$.ajax({
+					url: url,
+					dataType: 'html',
+					success: function(data){
+						console.log(data);
+						$("#bodyDiv").html(data);
+					}
+				});
+			});
+			
+			// 加载topMenu
+			function loadTopMenu(){
+				$("#topMenu").html("");
+				$.each(topMenu, function(index, menu){
+					var style = index == '0' ? 'layui-nav-item layui-this' : 'layui-nav-item';
+					var filter = "topMenu" + index;
+					$("#topMenu").append('<li class="' + style + '" data-id="' + menu.id + '"><a href="javascript:void(0);">' + menu.name + '</a></li>');
+				});	
+			}
+			
+			// 加载leftMenu
+			function loadLeftMenu(id){
+				$("#leftMenu").html("");
+				if(id == "1"){
+					$.each(leftMenu, function(index1, menu){
+						var style1 = (index1 == '0') ? 'layui-nav-item layui-nav-itemed' : 'layui-nav-item';
+						$("#leftMenu").append('<li class="' + style1 + '"><a class="" href="javascript:void(0);">' + menu.name + '</a><dl class="layui-nav-child"></dl></li>');
+						$.each(menu.childMenu, function(index2, childMenu){
+							var style2 = index1 == '0' && index2 == '0' ? 'layui-this' : '';
+							$("#leftMenu li:last dl").append('<dd data-url="' + childMenu.url + '"><a class="' + style2 + '" href="javascript:void(0);">&emsp;<i class="iconfont">&#xf02af;</i>&emsp;<span>' + childMenu.name + '</span></a></dd>');
+						});
+					});	
+				}else{
+					$.each(leftMenu2, function(index1, menu){
+						var style1 = (index1 == '0') ? 'layui-nav-item layui-nav-itemed' : 'layui-nav-item';
+						$("#leftMenu").append('<li class="' + style1 + '"><a class="" href="javascript:void(0);">' + menu.name + '</a><dl class="layui-nav-child"></dl></li>');
+						$.each(menu.childMenu, function(index2, childMenu){
+							var style2 = index1 == '0' && index2 == '0' ? 'layui-this' : '';
+							$("#leftMenu li:last dl").append('<dd data-url="' + childMenu.url + '"><a class="' + style2 + '" href="javascript:void(0);">&emsp;<i class="iconfont">&#xf02af;</i>&emsp;<span>' + childMenu.name + '</span></a></dd>');
+						});
+					});	
+				}
+				element.init();
+			}
+		});
+	</script>
+</body>
+</html>

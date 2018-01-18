@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.ssm.dao.IStudentInfoDao">
+	
+	<select id="countStuInfo" resultType="java.lang.Integer">
+		select count(*)
+    	  from studentinfo 
+	</select>
+	
+	<select id="retrieveStuInfoByPage" parameterType="map" resultType="hashmap">
+		select stuId, stuName, case when sex=0 then '男' else '女' end as sex, DATE(date) date, ROUND(DATEDIFF(date, now())/365, 0) age
+    	  from studentinfo 
+    	 limit #{startNum}, #{pageCount} 
+	</select>
+	
+	<select id="retrieveStuInfoById" parameterType="string" resultType="hashmap">
+		select stuId, stuName, case when sex=0 then '男' else '女' end as sex, DATE(date) date, profession, idNum, note
+    	  from studentinfo 
+    	 where stuId = #{stuId}
+	</select>
+</mapper>
