@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>首页</title>
+<link rel="stylesheet" href="common/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+
+<div style="margin: auto 300px;"> 
+	<img alt="验证码" src="/ssm/verifyCode/getVerifyCode" />&emsp;<a href="javascript:void(0);">看不清,换一张</a>
+	<br/>
+	<input type="text" id="code" />
+	<input type="button" id="check" value="校验" /> 
+	<br/>
+	<span id="result"></span>
+</div>
+
+</body>
+<script type="text/javascript" src="/ssm/common/jquery-1.11.1/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("a").on("click",function(){
+			$("img").attr("src", "/ssm/verifyCode/getVerifyCode?" + Math.random());
+		});
+		
+		$("#check").on("click", function(){
+			var code = $("#code").val();
+			$.ajax({
+				type: "post",
+				url: "/ssm/verifyCode/checkCode",
+				data: {"code": code},
+				success: function(data){
+					$("#result").text(data.result);
+				}
+			});
+		});
+	});
+</script>
+</html>
